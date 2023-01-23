@@ -1,4 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap:ital@1&family=Poppins&display=swap");
 * {
   padding: 0;
   margin: 0;
+}
+
+body {
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.inputs input {
+  border: 1px solid #111;
+  border-radius: 40px;
+  height: 30px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+}
+.inputs button {
+  border: none;
+  height: 65px;
+  width: 115px;
+  background-color: white;
+  margin-left: 10px;
+  font-family: "Poppins", sans-serif;
 }/*# sourceMappingURL=style.css.map */

@@ -34,13 +34,13 @@ const Name = document.getElementById("name");
 const body = document.getElementById("body");
 
 const newMovie = () => {
-  fetch(`${BASE_URL}${request}${API_KEY}`)
-    .then((response) => response.json())
-    .then((json) => {
-        const random = Math.floor(Math.random() * 20 + 1)
-        Image.innerHTML = `<img src="${image_url}${json.results[`${random}`].backdrop_path}"
+    fetch(`${BASE_URL}${request}${API_KEY}`)
+        .then((response) => response.json())
+        .then((json) => {
+            const random = Math.floor(Math.random() * 20 + 1)
+            Image.innerHTML = `<img src="${image_url}${json.results[`${random}`].backdrop_path}"
             width = 500/>`;
-    })
+        })
 
     // ALL IMAGE
     // .then((json) => {
@@ -52,10 +52,10 @@ const newMovie = () => {
     //     }))
     // })
 
-    
+
 };
 
-dogButton.addEventListener("click", () => {
+Button.addEventListener("click", () => {
     newMovie()
 })
 
@@ -67,16 +67,21 @@ const searchBtn = document.getElementById("searchBtn");
 const searchMovie = (name) => {
     console.log(searchInput.value)
 
-  fetch(`${BASE_URL}${search}${name}`)
-    .then((response) => response.json())
-    .then((json) => {
-        console.log(json)
-        const random = Math.floor(Math.random() * 20 + 1)
-        Image.innerHTML = `<img src="${image_url}${json.results[`${random}`].backdrop_path}"
-            width = 500/> <h1>${json.results[`${random}`].original_title}</h1>`;
-    })
+    fetch(`${BASE_URL}${search}${name}`)
+        .then((response) => response.json())
+        .then((json) => {
+            console.log(json)
+            const random = Math.floor(Math.random() * 20 + 1)
+            if (json.results[`${random}` ].backdrop_path != null) {
+                Image.innerHTML = `<img src="${image_url}${json.results[`${random}`].backdrop_path}"width = 500/>`;
+            }else{
+                Image.innerHTML = "";
+            }
+
+            Name.innerHTML = `<h1>${json.results[`${random}`].original_title}</h1>`;
+        })
 };
 searchBtn.addEventListener("click", () => {
     searchMovie(searchInput.value);
 })
-.catch(err);
+    .catch(err);
